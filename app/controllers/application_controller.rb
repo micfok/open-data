@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
 	private
 		def federal_spending
+			require 'spreadsheet'
 			Spreadsheet.client_encoding = 'UTF-8'
 			book = Spreadsheet.open("#{Rails.root}/app/assets/files/fed.xls")
 			sheet = book.worksheet 0
@@ -14,7 +15,7 @@ class ApplicationController < ActionController::Base
 			total = 0
 			sheet.each 1 do |row|
 				if row[1]
-					category << {:program => row[0], :amount => row[2]}
+					category << {:program => row[0], :amount => (row[2]/1000).floor}
 					category_names << row[0]
 					# puts row[1].to_s + " - " + row[3].to_s
 				end
@@ -45,7 +46,7 @@ class ApplicationController < ActionController::Base
 			total = 0
 			sheet.each 1 do |row|
 				if row[1]
-					category << {:program => row[0], :amount => row[2]}
+					category << {:program => row[0], :amount => (row[2]/1000).floor}
 					category_names << row[0]
 					# puts row[1].to_s + " - " + row[3].to_s
 				end

@@ -2,8 +2,8 @@
 <p>
 	The time is now: <%= Time.now %>
 	<br>
-	
-	<%= @x.count %>
+	<b>Total: </b> <%= @total %>
+	<br><%= @x.count %>
 	<table>
 		<thead>
 			<th>Program</th>
@@ -12,9 +12,12 @@
 		</thead>
 		<% @x.each do |y| %>
 			<tr>
-				<td><%= y[:program] %></td>
+				<td><%= y[:title] %></td>
 				<td><%= number_to_currency(y[:amount]) %></td>
-				<td><%= number_to_percentage( y[:amount] / @total *100)%></td>
+				<td><%= number_to_currency(@total) %></td>
+				<td><%= (y[:amount] * 100 / @total ) %></td>
+				<td><%= number_to_percentage( (y[:amount].to_f * 100) / @total, precision: 5 ) %></td>
+
 			</tr>
 		<% end %>	
 	</table>
