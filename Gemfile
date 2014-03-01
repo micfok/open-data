@@ -35,6 +35,8 @@ end
 #========CUSTOM============
 gem 'rails_12factor', group: :production
 
+gem 'spreadsheet'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -47,4 +49,4 @@ gem 'rails_12factor', group: :production
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-ruby "2.1.1"
+# ruby "2.1.1"
