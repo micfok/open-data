@@ -9,14 +9,17 @@
 			<th>Program</th>
 			<th>Amount</th>
 			<th>Percentage</th>
+			<th>Upvotes</th>
+			<th>Downvotes</th>
 		</thead>
 		<% @x.each do |y| %>
 			<tr>
 				<td><%= y[:title] %></td>
 				<td><%= number_to_currency(y[:amount]) %></td>
 				<td><%= number_to_currency(@total) %></td>
-				<td><%= (y[:amount] * 100 / @total ) %></td>
 				<td><%= number_to_percentage( (y[:amount].to_f * 100) / @total, precision: 5 ) %></td>
+				<td><%= y.upvotes%> </td>
+				<td><%= y.downvotes %>  </td>
 
 			</tr>
 		<% end %>	

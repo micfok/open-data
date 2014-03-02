@@ -13,6 +13,8 @@ OpenData::Application.routes.draw do
 
   post '/vote' => 'welcome#vote'
 
+  get '/community' => 'welcome#community'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
